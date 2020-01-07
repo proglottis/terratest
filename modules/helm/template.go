@@ -40,6 +40,9 @@ func RenderTemplateE(t *testing.T, options *Options, chartDir string, releaseNam
 	if options.KubectlOptions != nil && options.KubectlOptions.Namespace != "" {
 		args = append(args, "--namespace", options.KubectlOptions.Namespace)
 	}
+	if options.KubeVersion != "" {
+		args = append(args, "--kube-version", options.KubeVersion)
+	}
 	args, err = getValuesArgsE(t, options, args...)
 	if err != nil {
 		return "", err
